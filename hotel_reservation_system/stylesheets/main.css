@@ -1,0 +1,72 @@
+/* line 2, ../sass/base/_base.scss */
+ul li {
+  list-style: none;
+  color: white;
+}
+/* line 5, ../sass/base/_base.scss */
+ul li:hover {
+  color: red;
+}
+
+/* line 14, ../sass/base/_base.scss */
+.section-padding {
+  padding: 50px;
+}
+
+/* line 23, ../sass/base/_base.scss */
+.button-s {
+  border: 2px solid black;
+  margin: 20px;
+}
+
+/* line 28, ../sass/base/_base.scss */
+.service__heading {
+  margin: 50px;
+}
+
+/* line 1, ../sass/module/_navbar.scss */
+nav ul li a {
+  color: white !important;
+}
+
+/* line 6, ../sass/module/_navbar.scss */
+.color {
+  background-color: #24292E !important;
+}
+
+/* line 1, ../sass/module/_services.scss */
+.services {
+  background-color: #585858;
+}
+
+/* line 1, ../sass/module/_copyright.scss */
+.copyright {
+  padding: 10px 10px;
+  background-color: #000000;
+  color: white;
+}
+
+/* line 1, ../sass/module/_Footer.scss */
+.footer {
+  color: white;
+  background-color: #292929;
+}
+/* line 4, ../sass/module/_Footer.scss */
+.footer ul li a {
+  color: #fff;
+}
+
+/* line 1, ../sass/module/_Rooms.scss */
+.Rooms {
+  color: white;
+}
+
+/* line 1, ../sass/module/pages/_about.scss */
+.section-padding {
+  padding: 80px;
+}
+
+/* line 1, ../sass/module/pages/_Rooms.scss */
+.services-services {
+  padding: 10px;
+}
