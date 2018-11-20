@@ -1,4 +1,4 @@
-var app = angular.module('Vidzy', ['ngResource', 'ngRoute']);
+var app = angular.module('Hotel', ['ngResource', 'ngRoute']);
 
 app.config(['$routeProvider', function($routeProvider){
     $routeProvider
