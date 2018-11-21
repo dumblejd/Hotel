@@ -54,4 +54,13 @@ router.put('/:id', function(req, res){
         });
 });
 
+router.delete('/:id', function(req, res){
+    var collection = db.get('rooms');
+    collection.remove({ _id: req.params.id }, function(err, room){
+        if (err) throw err;
+
+        res.json(room);
+    });
+});
+
 module.exports = router;

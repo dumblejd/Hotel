@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+<h1>Reservation</h1>
+<ul>
+    <li ng-repeat='reserve in reserves'>
+        <a href="/reserves/{{reserve._id}}">
+            {{reserve.username}}
+            {{reserve.room_number}}
+        </a>
+    </li>
+</ul>
+</body>
+</html>
