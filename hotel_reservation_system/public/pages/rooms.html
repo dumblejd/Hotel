@@ -55,17 +55,20 @@
                         <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
                             <thead>
                             <tr>
-                                <th>User</th>
-                                <th>Hotel</th>
-                                <th>Seat</th>
-                                <th>Status</th>
+                                <th>Room Number</th>
+                                <th>Room Type</th>
+                                <th>Room Occupancy</th>
+                                <th>Room Price</th>
+                                <th>Room Reserved Time</th>
                             </tr>
                             </thead>
                             <tbody>
-                            <tr class="gradeX" ng-repeat="itemToAdd in itemsToAdd" ng-hide="!itemToAdd">
-                                <td>{{itemToAdd.user}}</td>
-                                <td>{{itemToAdd.hotel}}</td>
-                                <td>{{itemToAdd.seat}}</td>
+                            <tr class="gradeX" ng-repeat="room in rooms">
+                                <td>{{room.room_number}}</td>
+                                <td>{{room.type}}</td>
+                                <td>{{room.occupancy}}</td>
+                                <td>{{room.price}}</td>
+                                <td>{{room.reserved_time}}</td>
                                 <td class="center"><center>Confirmed</center></td>
                             </tr>
                             </tbody>
