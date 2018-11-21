@@ -14,6 +14,14 @@ app.config(['$routeProvider', function($routeProvider){
         .when('/login', {
         	templateUrl: 'pages/login.html'
         })
+		.when('/rooms', {
+            templateUrl: 'pages/rooms.html',
+            controller: 'showRoomController'
+		})
+        .when('/reserves', {
+            templateUrl: 'pages/reserves.html',
+            controller: 'showReserveController'
+        })
         .otherwise({
             redirectTo: '/'
         });
@@ -85,5 +93,21 @@ app.controller('singInController', ['$scope', '$resource',
 	}]);
 
 
-// 
+// showRoomController
+app.controller('showRoomController',
+    function($scope, $resource, $location){
+        var Rooms = $resource('/rooms', {});
+        Rooms.query(function(rooms){
+            $scope.rooms = rooms;
+        });
+    });
+
+// showReserveController
+app.controller('showReserveController',
+    function($scope, $resource, $location){
+        var Reserves = $resource('/reserves', {});
+        Reserves.query(function(reserves){
+            $scope.reserves = reserves;
+        });
+    });
 
