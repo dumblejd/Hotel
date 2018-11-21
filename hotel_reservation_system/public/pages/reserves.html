@@ -57,12 +57,14 @@
                             <tr>
                                 <th>Reserve Username</th>
                                 <th>Reserve Room Number</th>
+                                <th>Reserve Time</th>
                             </tr>
                             </thead>
                             <tbody>
                             <tr class="gradeX" ng-repeat="reserve in reserves">
                                 <td>{{reserve.username}}</td>
                                 <td>{{reserve.room_number}}</td>
+                                <td>{{reserve.date}}</td>
                             </tr>
                             </tbody>
                         </table>
