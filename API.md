@@ -53,10 +53,10 @@
     status:是否成功
 }
 ```
-## RoomAdmin
-### 新增房间
-- **path：** /roomAdmin
-- **method:** POST
+## Admin
+### 查询房间
+- **path：** /rooms/
+- **method:** GET
 - **请求参数：**   
 ```json
 {
@@ -68,6 +68,19 @@
     avaliable:
 }
 ```
+### 新增房间
+- **path：** /rooms/add-room
+- **method:** POST
+- **请求参数：**   
+```json
+{
+    roomType:
+    roomMaxOccupancy:
+    price:
+    reservedTime:
+    roomNumber:
+}
+```
 - **返回参数：**
 ```
 {
@@ -75,7 +88,7 @@
 }
 ```
 ### 修改房间
-- **path：** /roomAdmin
+- **path：** /rooms/:id
 - **method:** PUT
 - **请求参数：**   
 ```json
@@ -95,7 +108,7 @@
 }
 ```
 ### 删除房间
-- **path：** /roomAdmin
+- **path：** /rooms/delete/:id
 - **method:** DELETE
 - **请求参数：**   
 
@@ -110,25 +123,10 @@
     status:是否成功
 }
 ```
-### 禁用房间
-- **path：** /roomAdmin
-- **method:** DELETE
-- **请求参数：**   
-```json
-{
-    roomNumber:
-}
-```
-- **返回参数：**
-```
-{
-    status:是否成功
-}
-```
 ## RoomBooking
 ### 查询可用房间
-- **path：** /roomSearch
-- **method:** POST
+- **path：** /rooms/
+- **method:** GET
 - **请求参数：**   
 ```json
 {
@@ -144,12 +142,13 @@
 }
 ```
 ### 预定房间
-- **path：** /roomBooking
+- **path：** /reserves/reserve-room
 - **method:** POST
 - **请求参数：**  
 ```json
 {
     roomNumber:
+    username:
     reservedTime:
 }
 ```
@@ -159,16 +158,11 @@
    status: 是否成功
 }
 ```
-## Booking
+## Reserves
 ### 查询订单记录
-- **path：** /bookingRecord
-- **method:** POST
-- **请求参数：**  
-```json
-{
-    username:
-}
-```
+- **path：** /reserves
+- **method:** GET
+- **请求参数：
 - **返回参数：**
 ```
 {

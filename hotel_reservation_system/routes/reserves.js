@@ -12,4 +12,17 @@ router.get('/', function(req, res) {
     });
 });
 
+router.post('/', function(req, res){
+    var collection = db.get('reserves');
+    collection.insert({
+        "username" : req.body.username,
+        "room_number" : req.body.room_number,
+        "date" : req.body.date
+    }, function(err, reserve){
+        if (err) throw err;
+
+        res.json(reserve);
+    });
+});
+
 module.exports = router;
