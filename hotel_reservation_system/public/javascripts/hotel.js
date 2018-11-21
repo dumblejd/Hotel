@@ -12,7 +12,8 @@ app.config(['$routeProvider', function($routeProvider){
         	controller: 'registerController'
         })
         .when('/login', {
-        	templateUrl: 'pages/login.html'
+        	templateUrl: 'pages/login.html',
+        	controller: 'loginController'
         })
 		.when('/rooms', {
             templateUrl: 'pages/rooms.html',
@@ -35,31 +36,34 @@ app.controller('indexController',['$location','$scope',
 	function($location, $scope){
 		$scope.AccountHref = '/#/login';
 		$scope.LoginName = 'Login';
-		$scope.login = function(){
-			self.location = '/login'
-		}
-	}])
+	}]);
 
-app.controller('loginController',['location', '$scope', '$resource',
-	function($location, $scope){
+app.controller('loginController',['$location', '$scope', '$resource',
+	function($location, $scope, $resource){
 		$scope.loginUser = function(){
-			var userSignIn = $resource('/signUp');
-			userSignIn.save({}, {username: $scope.username, password: $scope.username}, function(status){
-				if (status.status = true){
-
+			var userSignIn = $resource('/users/signIn');
+			userSignIn.save({}, {username: $scope.username, password: $scope.password}, function(status){
+				if (status.status == true){
+					window.alert('1');
 				}
 				else{
-					alert('failed');
+					$scope.failureLogin = true;
 				}
-			})
-		}
-	}])
+			});
+		};
+
+		$scope.register = function(){
+			self.location = '#/register';
+		};
+
+	}]);
+
 // registerController
 app.controller('registerController', ['$scope', '$resource',
 	function($scope){
 		$scope.usernameValidation = function(){
 			var reg = /^[0-9a-zA-Z]+$/;
-			if (reg.text($scope.username)){
+			if (reg.test($scope.username)){
 				$scope.usernameMessage = false
 			}
 			else{
@@ -68,17 +72,19 @@ app.controller('registerController', ['$scope', '$resource',
 			
 		}
 		$scope.passwordValidation = function(){
-			var reg = /^[0-9a-zA-Z]{6，}$/
-			if (reg.text($scope.password)){
+			var reg = /^[0-9a-zA-Z]{6,}$/;
+			if (reg.test($scope.password)){
+				console.log('p');
 				$scope.passwordMessage = false
 			}
 			else{
+				console.log('f');
 				$scope.passwordMessage = true
 			}
 		};
 		$scope.emailValidation = function(){
 			var reg = /^[0-9a-zA-Z]+@[0-9a-zA-Z]+\.[0-9a-zA-Z]{3}$/;
-			if (reg.text($scope.email)){
+			if (reg.test($scope.email)){
 				$scope.emailMessage = false
 			}
 			else{
