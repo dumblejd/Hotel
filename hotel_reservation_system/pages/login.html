@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html>
+
 
 <head>
     <title>Login</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../stylesheets/main.css">
+    <link rel="stylesheet" href="../public/stylesheets/main.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
@@ -47,7 +46,7 @@
             <!--</div>-->
         <!--</div>-->
     <!--</div>-->
-    <div class="container" ng-controller="login" >
+    <div class="container" >
         <div class="row">
             <div class="col-md-4">
                 <div class="login-panel panel panel-default">
@@ -72,9 +71,8 @@
 
                             <div class="form-group">
                                 <button type="submit" ng-click="loginUser()" class="btn btn-primary">Login</button>
-                                <button type="submit" class="btn btn-default">Clear</button>
+                                <button  href="/register" type="submit" class="btn btn-default">Registration</button>
 
-                                <a href="/customer/registration" class="btn btn-link">Back to Registration</a>
                             </div>
 
                         </fieldset>
@@ -98,5 +96,3 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </body>
-
-</html>
