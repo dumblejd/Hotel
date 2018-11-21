@@ -17,7 +17,7 @@ app.config(['$routeProvider', function($routeProvider){
 }]);
 
 // signUpController
-app.controller('signUpController', ['$scope', '$resource', 
+app.controller('signUpController', ['$scope', '$resource',
 	function(){
 		var users = $resource('/users')
 		users.query()
