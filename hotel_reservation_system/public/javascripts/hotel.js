@@ -3,26 +3,65 @@ var app = angular.module('Hotel', ['ngResource', 'ngRoute']);
 app.config(['$routeProvider', function($routeProvider){
     $routeProvider
         .when('/', {
-            templateUrl: 'partials/home.html'
+            templateUrl: 'pages/index.html',
+            controller: 'indexController'
         })
 
-        .when('/signUp', {
-        	templateUrl: '',
-        	controller:
-
+        .when('/register', {
+        	templateUrl: 'pages/register.html',
+        	controller: 'signUpController'
+        })
+        .when('/login', {
+        	templateUrl: 'pages/login.html'
         })
         .otherwise({
             redirectTo: '/'
         });
 }]);
 
+app.controller('indexController',['$location','$scope', 
+	function($location, $scope){
+		$scope.AccountHref = '/#/login';
+		$scope.LoginName = 'Login';
+		$scope.login = function(){
+			self.location = '/login'
+		}
+}])
+
 // signUpController
 app.controller('signUpController', ['$scope', '$resource',
-	function(){
-		$scope.usernameValidation = signUpValidation.usernameValidation($scope.username);
-		$scope.passwordValidation = signUpValidation.passwordValidation($scope.password);
-		$scope.emailValidation = signUpValidation.emailValidation($scope.email);
-		$scope.phoneValidation = signUpValidation.phoneValidation($scope.phone)
+	function($scope){
+		$scope.usernameValidation = function(){
+			var reg = /^[0-9a-zA-Z]+$/;
+			if (reg.text($scope.username)){
+				$scope.usernameMessage = false
+			}
+			else{
+				$scope.usernameMessage = true
+			}
+			
+		}
+		$scope.passwordValidation = function(){
+			var reg = /^[0-9a-zA-Z]{6，}$/
+			if (reg.text($scope.password)){
+				$scope.passwordMessage = false
+			}
+			else{
+				$scope.passwordMessage = true
+			}
+		};
+		$scope.emailValidation = function(){
+			var reg = /^[0-9a-zA-Z]+@[0-9a-zA-Z]+\.[0-9a-zA-Z]{3}$/;
+			if (reg.text($scope.email)){
+				$scope.emailMessage = false
+			}
+			else{
+				$scope.emailMessage = true
+			}
+		};
+		$scope.phoneValidation = function(){
+
+		};
 	}]);
 
 // singInController
@@ -31,51 +70,6 @@ app.controller('singInController', ['$scope', '$resource',
 
 	}]);
 
-// signUpService
-app.service('signUpValidation', function(){
-	this.passwordValidation = function(password){
-		var reg = /^[0-9a-zA-Z]{6，}$/
-		if (reg.text(password)){
-			return true
-		}
-		else{
-			return false
-		}
-	}
-
-	this.usernameValidation = function(username){
-		var reg = /^[0-9a-zA-Z]+$/;
-		if (reg.text(password)){
-			return true
-		}
-		else{
-			return false
-		}
-	}
-
-	this.emailValidation = function(email){
-
-	}
-
-	this.phoneValidation = function(phone){
-
-	}
-
-	this.filledValidation = function(){
-
-	}
-});
-
-// signInService
-app.service('signInValidation', function(){
-	this.accountValidation = function(){
-
-	}
-
-	this.filledValidation = function(){
-
-	}
-});
 
 // 
 

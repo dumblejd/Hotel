@@ -79,6 +79,19 @@ nav ul li a {
   position: fixed;
   z-index: -1;
 }
+#loginback{
+  background:url(http://silverinfra.com/wp-content/uploads/2015/01/hotel.jpg);
+  height: 100%;
+}
 #title{
   color:white;
+}
+div.ng-scope{
+  height: 100%;
+}
+body{
+  height: 100%;
+}
+html{
+  height: 100%;
 }
