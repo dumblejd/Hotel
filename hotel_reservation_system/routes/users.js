@@ -60,7 +60,6 @@ router.put('/:id', function(req, res){
         });
 });
 
-
 //Check username exist
 router.get('/username/:username', function(req,res){
 	var collection = db.get('users');
@@ -70,4 +69,23 @@ router.get('/username/:username', function(req,res){
 		res.json(user);
 	});
 });
+
+router.post('/signIn', function(req, res){
+    var collection = db.get('users');
+    var username = req.body.username;
+    var password = req.body.password;
+    collection.findOne({
+        username: username,
+        password: password
+    }, function(err, user){
+        if (err) throw err;
+        if (user != null){
+            res.json({status: true});
+        }
+        else{
+            res.json({status: false})
+        }
+    })
+});
+
 module.exports = router;

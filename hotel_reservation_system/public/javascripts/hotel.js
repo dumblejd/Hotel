@@ -9,7 +9,7 @@ app.config(['$routeProvider', function($routeProvider){
 
         .when('/register', {
         	templateUrl: 'pages/register.html',
-        	controller: 'signUpController'
+        	controller: 'registerController'
         })
         .when('/login', {
         	templateUrl: 'pages/login.html'
@@ -26,10 +26,24 @@ app.controller('indexController',['$location','$scope',
 		$scope.login = function(){
 			self.location = '/login'
 		}
-}])
+	}])
 
-// signUpController
-app.controller('signUpController', ['$scope', '$resource',
+app.controller('loginController',['location', '$scope', '$resource',
+	function($location, $scope){
+		$scope.loginUser = function(){
+			var userSignIn = $resource('/signUp');
+			userSignIn.save({}, {username: $scope.username, password: $scope.username}, function(status){
+				if (status.status = true){
+
+				}
+				else{
+					alert('failed');
+				}
+			})
+		}
+	}])
+// registerController
+app.controller('registerController', ['$scope', '$resource',
 	function($scope){
 		$scope.usernameValidation = function(){
 			var reg = /^[0-9a-zA-Z]+$/;
