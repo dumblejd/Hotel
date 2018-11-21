@@ -15,11 +15,11 @@
 <nav class=" color navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#"><b>Hotel</b></a>
+            <a class="navbar-brand" href="/#/"><b>Hotel</b></a>
         </div>
         <ul class="nav navbar-nav pull-right">
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="rooms.html">Rooms</a></li>
+            <li><a href="/#/">Home</a></li>
+            <li><a href="/#/rooms">Rooms</a></li>
             <!--<li><a href="services.html">Services</a></li>-->
             <!--<li><a href="contact.html">Contact</a></li>-->
         </ul>
@@ -49,16 +49,13 @@
 
                         <fieldset ng-show="!successfulRegistration">
                             <div class="form-group">
-                                * Fullname, Username, Password should be minimum of 4 characters
-                            </div>
-                            <div class="form-group">
                                 <input class="form-control" ng-blur="fullnameValidation()" placeholder="Full Name" id='fullname' name="fullname" ng-model='fullname' type="text"  value="" autofocus required>
                             </div>
                             <div class="form-group">
-                                <input class="form-control"  ng-blur="usernameValidation()" placeholder="Username (more than six)" id='username' name="username" ng-model='username' type="text" value="" autofocus required>
+                                <input class="form-control"  ng-blur="usernameValidation()" placeholder="Username (alphabet or numeric)" id='username' name="username" ng-model='username' type="text" value="" autofocus required>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" ng-blur="passwordValidation()"  type='password' placeholder="Password (more than six)" id='password' name="password" ng-model='password' value="" required>
+                                <input class="form-control" ng-blur="passwordValidation()"  type='password' placeholder="Password (alphabet or numeric, at least six)" id='password' name="password" ng-model='password' value="" required>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" ng-blur="addressValidation()" type='address' placeholder="Address" id='address' name="address" ng-model='address' value="" required>
