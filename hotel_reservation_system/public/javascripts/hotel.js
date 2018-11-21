@@ -17,7 +17,7 @@ app.config(['$routeProvider', function($routeProvider){
 }]);
 
 // signUpController
-app.controller('signUpController', ['$scope', '$resource', 
+app.controller('signUpController', ['$scope', '$resource',
 	function(){
 		$scope.usernameValidation = signUpValidation.usernameValidation($scope.username);
 		$scope.passwordValidation = signUpValidation.passwordValidation($scope.password);
