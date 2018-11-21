@@ -41,11 +41,11 @@
 
                         <!--<div class="alert alert-success" ng-show=""> Registered successfully...</div>-->
                         <div class="alert alert-danger" ng-show="fullnameMessage">Unvaild Full Name</div>
-                        <div class="alert alert-danger" ng-show="errorMessage">Unvali</div>
-                        <div class="alert alert-danger" ng-show="errorMessage">{{Message}}</div>
-                        <div class="alert alert-danger" ng-show="errorMessage">{{message}}</div>
-                        <div class="alert alert-danger" ng-show="errorMessage">{{message}}</div>
-                        <div class="alert alert-danger" ng-show="errorMessage">{{message}}</div>
+                        <div class="alert alert-danger" ng-show="usernameMessage">Unvalid User Name</div>
+                        <div class="alert alert-danger" ng-show="passwordMessage">Unvalid Password</div>
+                        <div class="alert alert-danger" ng-show="addressMessage">Unvalid Address</div>
+                        <div class="alert alert-danger" ng-show="emailMessage">Unvalid Email</div>
+                        <div class="alert alert-danger" ng-show="phoneMessage">Unvalid Phone Number</div>
 
                         <fieldset ng-show="!successfulRegistration">
                             <div class="form-group">
@@ -64,7 +64,7 @@
                                 <input class="form-control" ng-blur="addressValidation()" type='address' placeholder="Address" id='address' name="address" ng-model='address' value="" required>
                             </div>
                             <div class="form-group">
-                                <input class="form-control" ng-blur="femailValidation()" type='email' placeholder="Email" id='email' name="email" ng-model='email' value="" required>
+                                <input class="form-control" ng-blur="emailValidation()" type='email' placeholder="Email" id='email' name="email" ng-model='email' value="" required>
                             </div>
                             <div class="form-group">
                                 <input class="form-control" ng-blur="phoneValidation()" type='phone' placeholder="Phone Number" id='phone' name="phone" ng-model='phone' value="" required>
