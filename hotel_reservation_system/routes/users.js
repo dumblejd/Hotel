@@ -4,6 +4,7 @@ var router = express.Router();
 var monk = require('monk');
 var db = monk('localhost:27017/hotel');
 
+//Get all user
 router.get('/', function(req, res) {
     var collection = db.get('users');
     collection.find({}, function(err, users){
@@ -12,12 +13,16 @@ router.get('/', function(req, res) {
     });
 });
 
+//Add user
 router.post('/', function(req, res){
     var collection = db.get('users');
     collection.insert({
         username: req.body.username,
         password: req.body.password,
-        email: req.body.email
+        email: req.body.email,
+        fullname: req.body.fullname,
+        phone: req.body.phone,
+        level: req.body.level
     }, function(err, user){
         if (err) throw err;
 
@@ -25,6 +30,7 @@ router.post('/', function(req, res){
     });
 });
 
+//Get one user
 router.get('/:id', function(req, res) {
     var collection = db.get('users');
     collection.findOne({ _id: req.params.id }, function(err, user){
@@ -34,6 +40,7 @@ router.get('/:id', function(req, res) {
     });
 });
 
+//Update user
 router.put('/:id', function(req, res){
     var collection = db.get('users');
     collection.update({
@@ -41,8 +48,11 @@ router.put('/:id', function(req, res){
         },
         {
             username: req.body.username,
-            password: req.body.password,
-            email: req.body.email
+	        password: req.body.password,
+	        email: req.body.email,
+	        fullname: req.body.fullname,
+	        phone: req.body.phone,
+	        level: req.body.level
         }, function(err, user){
             if (err) throw err;
 
@@ -50,4 +60,14 @@ router.put('/:id', function(req, res){
         });
 });
 
+
+//Check username exist
+router.get('/username/:username', function(req,res){
+	var collection = db.get('users');
+	collection.findOne({username: req.params.username}, function(err, user){
+		if (err) throw err;
+
+		res.json(user);
+	});
+});
 module.exports = router;
