@@ -18,6 +18,10 @@ app.config(['$routeProvider', function($routeProvider){
             templateUrl: 'pages/rooms.html',
             controller: 'showRoomController'
 		})
+        .when('/search', {
+            templateUrl: 'pages/search.html',
+            controller: ''
+        })
         .when('/reserves', {
             templateUrl: 'pages/reserves.html',
             controller: 'showReserveController'
