@@ -12,6 +12,16 @@ router.get('/', function(req, res) {
     });
 });
 
+router.get('/:id', function(req, res) {
+    var collection = db.get('reserves');
+    collection.findOne({ _id: req.params.id }, function(err, reserve){
+        if (err) throw err;
+
+        res.json(reserve);
+    });
+});
+
+
 router.post('/', function(req, res){
     var collection = db.get('reserves');
     collection.insert({

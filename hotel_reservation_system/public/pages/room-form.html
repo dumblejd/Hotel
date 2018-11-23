@@ -1,0 +1,21 @@
+<h1>Add a Room</h1>
+
+<form>
+    <div class="form-group">
+        <label>Room Number</label>
+        <input class="form-control" ng-model="room.room_number"></input>
+    </div>
+    <div class="form-group">
+        <label>Room Type</label>
+        <textarea class="form-control" ng-model="room.type"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Room Occupancy</label>
+        <textarea class="form-control" ng-model="room.occupancy"></textarea>
+    </div>
+    <div class="form-group">
+        <label>Room Price</label>
+        <textarea class="form-control" ng-model="room.price"></textarea>
+    </div>
+    <input type="button" class="btn btn-primary" value="Save" ng-click="save()"></input>
+</form>
