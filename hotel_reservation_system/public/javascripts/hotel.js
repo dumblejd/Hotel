@@ -34,8 +34,21 @@ app.config(['$routeProvider', function($routeProvider){
 
 app.controller('indexController',['$location','$scope', 
 	function($location, $scope){
-		$scope.AccountHref = '/#/login';
-		$scope.LoginName = 'Login';
+		//window.alert(sessionStorage.getItem('user'));
+		if (sessionStorage.getItem('user')!=null){
+			$scope.AccountHref = '#/';
+			$scope.LoginName = sessionStorage.getItem('user');
+		}
+		else{
+            $scope.AccountHref = '/#/login';
+            $scope.LoginName = 'Login';
+		}
+
+		$scope.signOut = function () {
+			sessionStorage.clear();
+			location.reload();
+        }
+
 	}]);
 
 app.controller('loginController',['$location', '$scope', '$resource',
@@ -44,7 +57,8 @@ app.controller('loginController',['$location', '$scope', '$resource',
 			var userSignIn = $resource('/users/signIn');
 			userSignIn.save({}, {username: $scope.username, password: $scope.password}, function(status){
 				if (status.status == true){
-					window.alert('1');
+					sessionStorage.setItem('user', $scope.username);
+					self.location='#/';
 				}
 				else{
 					$scope.failureLogin = true;
@@ -59,18 +73,31 @@ app.controller('loginController',['$location', '$scope', '$resource',
 	}]);
 
 // registerController
-app.controller('registerController', ['$scope', '$resource',
-	function($scope){
+app.controller('registerController', ['$scope', '$resource', '$location',
+	function($scope, $resource){
+		var canRegister = false;
 		$scope.usernameValidation = function(){
 			var reg = /^[0-9a-zA-Z]+$/;
-			if (reg.test($scope.username)){
-				$scope.usernameMessage = false
-			}
-			else{
-				$scope.usernameMessage = true
-			}
-			
-		}
+			var usedUsername = $resource('users/username/:username');
+			var available = false;
+
+			usedUsername.get({username: $scope.username}, function(user) {
+				if (user.status == true){
+					available = true;
+				}
+				else{
+					available = false;
+				}
+
+                if (reg.test($scope.username) && available == true){
+                    $scope.usernameMessage = false
+                }
+                else{
+                    $scope.usernameMessage = true
+                }
+            });
+		};
+
 		$scope.passwordValidation = function(){
 			var reg = /^[0-9a-zA-Z]{6,}$/;
 			if (reg.test($scope.password)){
@@ -82,6 +109,7 @@ app.controller('registerController', ['$scope', '$resource',
 				$scope.passwordMessage = true
 			}
 		};
+
 		$scope.emailValidation = function(){
 			var reg = /^[0-9a-zA-Z]+@[0-9a-zA-Z]+\.[0-9a-zA-Z]{3}$/;
 			if (reg.test($scope.email)){
@@ -91,9 +119,38 @@ app.controller('registerController', ['$scope', '$resource',
 				$scope.emailMessage = true
 			}
 		};
-		$scope.phoneValidation = function(){
 
+		$scope.phoneValidation = function(){
+			var reg = /^[0-9]{10}$/;
+            if (reg.test($scope.phone)){
+                $scope.phoneMessage = false
+            }
+            else{
+                $scope.phoneMessage = true
+            }
 		};
+		$scope.registerUser = function () {
+			if($scope.username==null){
+				console.log('kong');
+			}
+			if (!($scope.username==null||$scope.password==null||$scope.email==null||$scope.usernameMessage||$scope.passwordMessage||$scope.emailMessage)){
+                var registerUser = $resource('/users');
+                registerUser.save({}, {
+                    username: $scope.username,
+                    password: $scope.password,
+                    email: $scope.email,
+                    fullname: $scope.fullname,
+                    address: $scope.address,
+                    phone: $scope.phone,
+                    level: 1
+				}, function (status) {
+                    if (status.status == true){
+                        window.alert('Register successful');
+                        self.location = '#/login';
+                    }
+                });
+			}
+        }
 	}]);
 
 // singInController

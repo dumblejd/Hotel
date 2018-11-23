@@ -1,4 +1,5 @@
 var express = require('express');
+var crypto = require('crypto');
 var router = express.Router();
 
 var monk = require('monk');
@@ -16,17 +17,21 @@ router.get('/', function(req, res) {
 //Add user
 router.post('/', function(req, res){
     var collection = db.get('users');
+
+    hash = crypto.createHash('md5')
+    hash.update(req.body.password)
+
     collection.insert({
         username: req.body.username,
-        password: req.body.password,
+        password: hash.digest('hex'),
         email: req.body.email,
         fullname: req.body.fullname,
+        address: req.body.address,
         phone: req.body.phone,
         level: req.body.level
     }, function(err, user){
         if (err) throw err;
-
-        res.json(user);
+        res.json({status: true});
     });
 });
 
@@ -66,17 +71,27 @@ router.get('/username/:username', function(req,res){
 	collection.findOne({username: req.params.username}, function(err, user){
 		if (err) throw err;
 
-		res.json(user);
+        if (user != null){
+            res.json({status: false});
+        }
+        else{
+            res.json({status: true});
+        }
 	});
 });
 
+//User sign in
 router.post('/signIn', function(req, res){
     var collection = db.get('users');
     var username = req.body.username;
     var password = req.body.password;
+
+    hash = crypto.createHash('md5')
+    hash.update(password);
+
     collection.findOne({
         username: username,
-        password: password
+        password: hash.digest('hex')
     }, function(err, user){
         if (err) throw err;
         if (user != null){
