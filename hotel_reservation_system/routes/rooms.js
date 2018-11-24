@@ -11,6 +11,27 @@ router.get('/', function(req, res) {
         res.json(rooms);
     });
 });
+router.get('/type', function(req, res) {
+    var collection = db.get('rooms');
+    collection.find({}, function(err, rooms){
+        if (err) throw err;
+        //res.json(rooms);
+
+
+        var result = [];
+        for (var i = 0, arrayLen = rooms.length; i < arrayLen; i++) {
+            for (var j = 0, resLen = result.length; j < resLen; j++ ) {
+                if (result[j] == rooms[i].type) {
+                    break;
+                }
+            }
+            if (j == resLen) {
+                result.push(rooms[i].type)
+            }
+        }
+        res.json(result);
+    });
+});
 
 router.post('/', function(req, res){
     var collection = db.get('rooms');

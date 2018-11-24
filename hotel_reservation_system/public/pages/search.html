@@ -33,25 +33,31 @@
             <div class="col-md-4">
                 <div class="login-panel panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Customer Registration</h3>
+                        <h3 class="panel-title">Avaliable Room Search</h3>
                     </div>
                     <div class="panel-body">
 
                         <!--<div class="alert alert-success" ng-show=""> Registered successfully...</div>-->
-                        <div class="alert alert-danger" ng-show="fullnameMessage">Unvaild Full Name</div>
-                        <div class="alert alert-danger" ng-show="usernameMessage">Unvalid User Name</div>
-                        <div class="alert alert-danger" ng-show="passwordMessage">Unvalid Password</div>
-                        <div class="alert alert-danger" ng-show="addressMessage">Unvalid Address</div>
-                        <div class="alert alert-danger" ng-show="emailMessage">Unvalid Email</div>
-                        <div class="alert alert-danger" ng-show="phoneMessage">Unvalid Phone Number</div>
+                        <!--<div class="alert alert-danger" ng-show="fullnameMessage">Unvaild Full Name</div>-->
+                        <!--<div class="alert alert-danger" ng-show="usernameMessage">Unvalid User Name</div>-->
+                        <!--<div class="alert alert-danger" ng-show="passwordMessage">Unvalid Password</div>-->
+                        <!--<div class="alert alert-danger" ng-show="addressMessage">Unvalid Address</div>-->
+                        <!--<div class="alert alert-danger" ng-show="emailMessage">Unvalid Email</div>-->
+                        <!--<div class="alert alert-danger" ng-show="phoneMessage">Unvalid Phone Number</div>-->
 
                         <fieldset ng-show="!successfulRegistration">
-                            <div class="form-group">
-                                <input class="form-control" ng-blur="fullnameValidation()" placeholder="Full Name" id='fullname' name="fullname" ng-model='fullname' type="text"  value="" autofocus required>
+                            <!--<div class="well">-->
+                                <!--Room Type-->
+                                <!--<select ng-model="selectedType" ng-options="room.type for room in rooms"></select>-->
+                            <!--</div>-->
+                            <div class="well">
+                                Room Type
+                                <select ng-model="selectedType" ng-options="x for x in allType"></select>
                             </div>
-                            <div class="form-group">
-                                <input class="form-control"  ng-blur="usernameValidation()" placeholder="Username (alphabet or numeric)" id='username' name="username" ng-model='username' type="text" value="" autofocus required>
-                            </div>
+                            <!--<div class="well">-->
+                                <!--People-->
+                                <!--<select ng-model="selectedName" ng-options="room.type for room in rooms"></select>-->
+                            <!--</div>-->
                             <div class="form-group">
                                 <input class="form-control" ng-blur="passwordValidation()"  type='password' placeholder="Password (alphabet or numeric, at least six)" id='password' name="password" ng-model='password' value="" required>
                             </div>

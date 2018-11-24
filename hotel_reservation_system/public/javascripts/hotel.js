@@ -21,7 +21,7 @@ app.config(['$routeProvider', function($routeProvider){
 		})
         .when('/search', {
             templateUrl: 'pages/search.html',
-            controller: ''
+            controller: 'searchController'
         })
 		.when('/add-room', {
             templateUrl: 'pages/room-form.html',
@@ -43,6 +43,14 @@ app.config(['$routeProvider', function($routeProvider){
             redirectTo: '/'
         });
 }]);
+app.controller('searchController',['$location','$scope','$resource',
+    function($location, $scope,$resource){
+        $scope.selectedType=[{type:"Any"}];
+        var Rooms = $resource('/rooms/type', {});
+        Rooms.query(function(roomType){
+            $scope.allType = roomType;
+        });
+    }]);
 
 app.controller('indexController',['$location','$scope', 
 	function($location, $scope){
