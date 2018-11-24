@@ -43,13 +43,28 @@ app.config(['$routeProvider', function($routeProvider){
             redirectTo: '/'
         });
 }]);
-app.controller('searchController',['$location','$scope','$resource',
-    function($location, $scope,$resource){
+app.controller('searchController',['$location','$scope','$resource','$filter',
+    function($location, $scope,$resource,$filter){
         $scope.selectedType=[{type:"Any"}];
         var Rooms = $resource('/rooms/type', {});
         Rooms.query(function(roomType){
             $scope.allType = roomType;
         });
+        // $scope.selectedCapacity=[{type:"Any"}];  //for load capacity in db, but not needed
+        // var Rooms = $resource('/rooms/capacity', {});
+        // Rooms.query(function(roomCapacity){
+        //     $scope.allCapacity = roomCapacity;
+        // });
+        //para: numberOfPeople  startDate endDate roomType
+        $scope.searchRooms=function()
+        {
+            var roomType=$scope.roomType;
+            var peopleNumber=$scope.numberOfPeople
+            var start=$filter("date")($scope.startDate.valueOf(), "MM/dd/yyyy");
+            var end=$filter("date")($scope.endDate.valueOf(), "MM/dd/yyyy");
+
+        }
+        //para:searchResult
     }]);
 
 app.controller('indexController',['$location','$scope', 

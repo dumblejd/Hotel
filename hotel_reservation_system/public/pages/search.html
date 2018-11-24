@@ -11,6 +11,7 @@
 </head>
 
 <body id="register"> -->
+<script src="/javascripts/angular-datepicker.js"></script>
 <img id="background" src="https://s-ec.bstatic.com/images/hotel/max1024x768/153/15356884.jpg">
 <nav class=" color navbar navbar-inverse navbar-fixed-top">
     <div class="container">
@@ -26,7 +27,7 @@
 <!--ng-app='myApp' ng-controller='login'  ng-model="userName"  ng-model="passWord"  ng-click="login()"-->
 <!--ng-app='myApp' ng-controller='login'  ng-model="userName"  ng-model="passWord"  ng-click="login()"-->
 <!--ng-app='myApp' ng-controller='login'  ng-model="userName"  ng-model="passWord"  ng-click="login()"-->
-<section class="section-padding" >
+<section class="section-padding">
 
     <div class="container">
         <div class="row">
@@ -46,34 +47,33 @@
                         <!--<div class="alert alert-danger" ng-show="phoneMessage">Unvalid Phone Number</div>-->
 
                         <fieldset ng-show="!successfulRegistration">
-                            <!--<div class="well">-->
-                                <!--Room Type-->
-                                <!--<select ng-model="selectedType" ng-options="room.type for room in rooms"></select>-->
-                            <!--</div>-->
+
                             <div class="well">
-                                Room Type
+                                Room Type Preferred
                                 <select ng-model="selectedType" ng-options="x for x in allType"></select>
                             </div>
+
                             <!--<div class="well">-->
-                                <!--People-->
-                                <!--<select ng-model="selectedName" ng-options="room.type for room in rooms"></select>-->
+                            <!--Room Capacity-->
+                            <!--<select ng-model="selectedCapacity" ng-options="x for x in allCapacity"></select>-->
                             <!--</div>-->
                             <div class="form-group">
-                                <input class="form-control" ng-blur="passwordValidation()"  type='password' placeholder="Password (alphabet or numeric, at least six)" id='password' name="password" ng-model='password' value="" required>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" ng-blur="addressValidation()" type='address' placeholder="Address" id='address' name="address" ng-model='address' value="" required>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" ng-blur="emailValidation()" type='email' placeholder="Email" id='email' name="email" ng-model='email' value="" required>
-                            </div>
-                            <div class="form-group">
-                                <input class="form-control" ng-blur="phoneValidation()" type='phone' placeholder="Phone Number" id='phone' name="phone" ng-model='phone' value="" required>
+                                <input class="form-control" type='capacity' placeholder="Number of people"
+                                       id='numberOfPeople' name="numberOfPeople" ng-model='numberOfPeople' value=""
+                                       required>
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" ng-click="registerUser()" class="btn btn-primary">Register</button>
-                                <button  href="login.html" type="submit" class="btn btn-default">Back to Login</button>
+                                Arrive Date
+                                <input type="date" ng-model="startDate"/>
+                            </div>
+                            <div class="form-group">
+                                Leave Date
+                                <input type="date" ng-model="endDate"/>
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" ng-click="searchRooms()" class="btn btn-primary">Search</button>
 
                             </div>
 
@@ -81,15 +81,30 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-8" ng-model="searchResult">
+                <div class="login-panel panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Our Suggestion</h3>
+                    </div>
+                    <div class="panel-body">
+
+                        <fieldset>
+
+                            <div class="form-group">
+                                Arrive Date
+                                <input type="date" ng-model="startDate"/>
+                            </div>
+                            <div class="form-group">
+                                Leave Date
+                                <input type="date" ng-model="endDate"/>
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-
 </section>
-
-
-
-
 
 
 <!-- copyright -->
