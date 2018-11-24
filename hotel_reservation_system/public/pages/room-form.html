@@ -3,7 +3,7 @@
 <form>
     <div class="form-group">
         <label>Room Number</label>
-        <input class="form-control" ng-model="room.room_number"></input>
+        <input class="form-control" ng-model="room.room_number">
     </div>
     <div class="form-group">
         <label>Room Type</label>
@@ -17,5 +17,9 @@
         <label>Room Price</label>
         <textarea class="form-control" ng-model="room.price"></textarea>
     </div>
-    <input type="button" class="btn btn-primary" value="Save" ng-click="save()"></input>
+    <div class="form-group">
+        <label>Available</label>
+        <select class="form-control" ng-init="room.available = 'available'" ng-model="room.available" ng-options="x for x in ['available', 'unavailable']"></select>
+    </div>
+    <input type="button" class="btn btn-primary" value="Save" ng-click="save()">
 </form>

@@ -95,7 +95,7 @@ router.post('/signIn', function(req, res){
     }, function(err, user){
         if (err) throw err;
         if (user != null){
-            res.json({status: true});
+            res.json({status: true, level:user.level});
         }
         else{
             res.json({status: false});

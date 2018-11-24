@@ -17,5 +17,9 @@
         <label>Room Price</label>
         <textarea class="form-control" ng-model="room.price"></textarea>
     </div>
+    <div class="form-group">
+        <label>Available</label>
+        <select class="form-control" ng-init="selectedName = 'available'" ng-model="room.available" ng-options="x for x in ['available', 'unavailable']"></select>
+    </div>
     <input type="button" class="btn btn-primary" value="Save" ng-click="save()">
 </form>

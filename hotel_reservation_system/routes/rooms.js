@@ -40,6 +40,7 @@ router.post('/', function(req, res){
         type: req.body.type,
         occupancy: req.body.occupancy,
         price: req.body.price,
+        available: req.body.available,
         reserved_time: req.body.reserved_time
     }, function(err, room){
         if (err) throw err;
@@ -67,6 +68,7 @@ router.put('/:id', function(req, res){
             type: req.body.type,
             occupancy: req.body.occupancy,
             price: req.body.price,
+            available: req.body.available,
             reserved_time: req.body.reserved_time
         }, function(err, room){
             if (err) throw err;

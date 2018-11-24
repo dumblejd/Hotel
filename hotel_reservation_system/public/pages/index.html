@@ -1,16 +1,4 @@
-<!-- <head>
-	<title>Hotel</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="public/stylesheets/main.css">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
- 
 
-</head> -->
-
-<!--  <body> -->
-<!-- beginning of nav -->
 <nav class=" color navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header" >
@@ -18,20 +6,19 @@
         </div>
         <ul class="nav navbar-nav pull-right">
             <li><a href="/#/">Home</a></li>
-            <li><a ng-href={{AccountHref}}>{{LoginName}}</a></li>
-            <li><a href="/#/rooms">Rooms</a></li>
+            <li ng-show="room"><a href="/#/rooms">Room Administration</a></li>
             <li><a href="/#/search">Search</a></li>
             <li><a href="contact.html">Contact</a></li>
-            <li><a href="/#/" ng-click="signOut()">Sign Out</a></li>
+            <li ng-show="signout"><a href="/#/" ng-click="signOut()">Log Out</a></li>
+            <li><a ng-href={{AccountHref}}>{{LoginName}}</a></li>
         </ul>
     </div>
 </nav>
-  
-<!-- end of nav -->
+
 
 
  <!-- heroslider -->
-    <section>
+<section>
   <div id="myCarousel" class="carousel slide" data-ride="carousel">
     <!-- Indicators -->
     <ol class="carousel-indicators">
@@ -235,18 +222,6 @@ lients and will do our best to make sure you are completely satisfied
 </footer>
 <!-- End of footer -->
 
-
-
-<!-- Copyright -->
-<div class="copyright">
-        <div class="container">
-            <div class="col-md-12">
-
-                    <p class="paragraph"> Copyright by <a href="#"> KITE Nepal </a> , 2018</p>
-
-            </div>
-        </div>
-    </div>
 
 
   

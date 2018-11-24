@@ -56,12 +56,17 @@ app.controller('indexController',['$location','$scope',
 	function($location, $scope){
 		//window.alert(sessionStorage.getItem('user'));
 		if (sessionStorage.getItem('user')!=null){
+			$scope.signout = true;
 			$scope.AccountHref = '#/';
-			$scope.LoginName = sessionStorage.getItem('user');
+			$scope.LoginName = 'Welcome! ' + sessionStorage.getItem('user');
+			if (sessionStorage.getItem('level')==0){
+				$scope.room = true;
+			}
 		}
 		else{
+			$scope.signout = false;
             $scope.AccountHref = '/#/login';
-            $scope.LoginName = 'Login';
+            $scope.LoginName = 'Log In';
 		}
 
 		$scope.signOut = function () {
@@ -78,6 +83,7 @@ app.controller('loginController',['$location', '$scope', '$resource',
 			userSignIn.save({}, {username: $scope.username, password: $scope.password}, function(status){
 				if (status.status == true){
 					sessionStorage.setItem('user', $scope.username);
+					sessionStorage.setItem('level', status.level);
 					self.location='#/';
 				}
 				else{
@@ -95,7 +101,6 @@ app.controller('loginController',['$location', '$scope', '$resource',
 // registerController
 app.controller('registerController', ['$scope', '$resource', '$location',
 	function($scope, $resource){
-		var canRegister = false;
 		$scope.usernameValidation = function(){
 			var reg = /^[0-9a-zA-Z]+$/;
 			var usedUsername = $resource('users/username/:username');
@@ -173,13 +178,6 @@ app.controller('registerController', ['$scope', '$resource', '$location',
         }
 	}]);
 
-// singInController
-app.controller('singInController', ['$scope', '$resource',
-	function(){
-
-	}]);
-
-
 // showRoomController
 app.controller('showRoomController',
     function($scope, $resource, $location){
@@ -225,7 +223,7 @@ app.controller('DeleteRoomController', ['$scope', '$resource', '$location', '$ro
 
         Rooms.get({ id: $routeParams.id }, function(room){
             $scope.room = room;
-        })
+        });
 
         $scope.delete = function(){
             Rooms.delete({ id: $routeParams.id }, function(room){
