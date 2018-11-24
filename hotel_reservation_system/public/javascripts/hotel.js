@@ -69,25 +69,23 @@ app.controller('searchController',['$location','$scope','$resource','$filter',
 
 app.controller('indexController',['$location','$scope', 
 	function($location, $scope){
-		//window.alert(sessionStorage.getItem('user'));
-		if (sessionStorage.getItem('user')!=null){
-			$scope.signout = true;
-			$scope.AccountHref = '#/';
-			$scope.LoginName = 'Welcome! ' + sessionStorage.getItem('user');
-			if (sessionStorage.getItem('level')==0){
-				$scope.room = true;
-			}
-		}
-		else{
-			$scope.signout = false;
-            $scope.AccountHref = '/#/login';
-            $scope.LoginName = 'Log In';
-		}
-
-		$scope.signOut = function () {
-			sessionStorage.clear();
-			location.reload();
-        }
+            if (sessionStorage.getItem('user')!=null){
+                $scope.signout = true;
+                $scope.AccountHref = '#/';
+                $scope.LoginName = 'Welcome! ' + sessionStorage.getItem('user');
+                if (sessionStorage.getItem('level')==0){
+                    $scope.room = true;
+                }
+            }
+            else{
+                $scope.signout = false;
+                $scope.AccountHref = '/#/login';
+                $scope.LoginName = 'Log In';
+            }
+            $scope.signOut = function () {
+                sessionStorage.clear();
+                location.reload();
+            }
 
 	}]);
 
@@ -190,6 +188,10 @@ app.controller('registerController', ['$scope', '$resource', '$location',
                     }
                 });
 			}
+        }
+
+        $scope.back = function () {
+            self.location = '#/login';
         }
 	}]);
 

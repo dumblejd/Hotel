@@ -70,9 +70,9 @@ nav ul li a {
 .services-services {
   padding: 10px;
 }
-/*#register{*/
-  /*background-image: url();*/
-/*}*/
+.center{
+  text-align: center;
+}
 #background{
   width: 100%;
   height: 100%;
@@ -81,10 +81,34 @@ nav ul li a {
 }
 #loginback{
   background:url(http://silverinfra.com/wp-content/uploads/2015/01/hotel.jpg);
-  height: 100%;
+  background-size: 100%;
+}
+#registerback{
+  background:url(https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?cs=srgb&dl=bed-bedroom-cozy-164595.jpg&fm=jpg);
+  background-size: 100%;
+}
+#roomBack{
+  background:url(https://images.pexels.com/photos/974382/pexels-photo-974382.jpeg?cs=srgb&dl=bulbs-cafe-chairs-974382.jpg&fm=jpg);
+  background-size: 100%;
+}
+#roomFormBack{
+  background:url(https://images.pexels.com/photos/210604/pexels-photo-210604.jpeg?cs=srgb&dl=balcony-bed-bedroom-210604.jpg&fm=jpg);
+  background-size: 100%;
+}
+#roomEditBack{
+  background:url(https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?cs=srgb&dl=apartment-bed-bedroom-271618.jpg&fm=jpg);
+  background-size: 100%;
+}
+#roomDeleteBack{
+  background:url(https://images.pexels.com/photos/276583/pexels-photo-276583.jpeg?cs=srgb&dl=apartment-architecture-carpet-276583.jpg&fm=jpg);
+  background-size: 100%;
 }
 #title{
   color:white;
+}
+#logo{
+  height: 50px;
+  width: 50px;
 }
 div.ng-scope{
   height: 100%;
