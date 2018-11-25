@@ -198,6 +198,9 @@ app.controller('registerController', ['$scope', '$resource', '$location',
 // showRoomController
 app.controller('showRoomController',
     function($scope, $resource, $location){
+        if(sessionStorage.getItem('level')!=0){
+            $location.path('/')
+        }
         var Rooms = $resource('/rooms', {});
         Rooms.query(function(rooms){
             $scope.rooms = rooms;
@@ -207,6 +210,9 @@ app.controller('showRoomController',
 // AddRoomController
 app.controller('AddRoomController', ['$scope', '$resource', '$location',
     function($scope, $resource, $location){
+        if(sessionStorage.getItem('level')!=0){
+            $location.path('/')
+        }
         $scope.save = function(){
             var Rooms = $resource('/rooms');
             Rooms.save($scope.room, function(){
@@ -218,6 +224,9 @@ app.controller('AddRoomController', ['$scope', '$resource', '$location',
 // EditRoomController
 app.controller('EditRoomController', ['$scope', '$resource', '$location', '$routeParams',
     function($scope, $resource, $location, $routeParams){
+        if(sessionStorage.getItem('level')!=0){
+            $location.path('/')
+        }
         var Rooms = $resource('/rooms/:id', { id: '@_id' }, {
             update: { method: 'PUT' }
         });
@@ -236,6 +245,10 @@ app.controller('EditRoomController', ['$scope', '$resource', '$location', '$rout
 // DeleteRoomController
 app.controller('DeleteRoomController', ['$scope', '$resource', '$location', '$routeParams',
     function($scope, $resource, $location, $routeParams){
+        if(sessionStorage.getItem('level')!=0){
+            $location.path('/')
+        }
+
         var Rooms = $resource('/rooms/:id');
 
         Rooms.get({ id: $routeParams.id }, function(room){
@@ -257,5 +270,6 @@ app.controller('showReserveController',
             $scope.reserves = reserves;
         });
     });
+
 
 

@@ -70,9 +70,18 @@ nav ul li a {
 .services-services {
   padding: 10px;
 }
-.center{
-  text-align: center;
+
+th{
+    text-align: center;
+    align-content: center;
+
 }
+
+td{
+    text-align: center;
+}
+
+
 #background{
   width: 100%;
   height: 100%;
@@ -86,6 +95,10 @@ nav ul li a {
 #registerback{
   background:url(https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?cs=srgb&dl=bed-bedroom-cozy-164595.jpg&fm=jpg);
   background-size: 100%;
+}
+#searchBack{
+    background:url(https://images.pexels.com/photos/931887/pexels-photo-931887.jpeg?cs=srgb&dl=architecture-business-chair-931887.jpg&fm=jpg);
+    background-size: 100%;
 }
 #roomBack{
   background:url(https://images.pexels.com/photos/974382/pexels-photo-974382.jpeg?cs=srgb&dl=bulbs-cafe-chairs-974382.jpg&fm=jpg);
@@ -109,6 +122,9 @@ nav ul li a {
 #logo{
   height: 50px;
   width: 50px;
+}
+#addButton{
+    margin-bottom: 20px;
 }
 div.ng-scope{
   height: 100%;

@@ -1,18 +1,5 @@
-<!-- <!DOCTYPE html>
-<html>
 
-<head>
-    <title>Sign Up</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../public/stylesheets/main.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-</head>
-
-<body id="register"> -->
-<script src="/javascripts/angular-datepicker.js"></script>
-<img id="background" src="https://s-ec.bstatic.com/images/hotel/max1024x768/153/15356884.jpg">
+<div id="searchBack">
 <nav class=" color navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
@@ -24,9 +11,7 @@
         </ul>
     </div>
 </nav>
-<!--ng-app='myApp' ng-controller='login'  ng-model="userName"  ng-model="passWord"  ng-click="login()"-->
-<!--ng-app='myApp' ng-controller='login'  ng-model="userName"  ng-model="passWord"  ng-click="login()"-->
-<!--ng-app='myApp' ng-controller='login'  ng-model="userName"  ng-model="passWord"  ng-click="login()"-->
+
 <section class="section-padding">
 
     <div class="container">
@@ -38,14 +23,6 @@
                     </div>
                     <div class="panel-body">
 
-                        <!--<div class="alert alert-success" ng-show=""> Registered successfully...</div>-->
-                        <!--<div class="alert alert-danger" ng-show="fullnameMessage">Unvaild Full Name</div>-->
-                        <!--<div class="alert alert-danger" ng-show="usernameMessage">Unvalid User Name</div>-->
-                        <!--<div class="alert alert-danger" ng-show="passwordMessage">Unvalid Password</div>-->
-                        <!--<div class="alert alert-danger" ng-show="addressMessage">Unvalid Address</div>-->
-                        <!--<div class="alert alert-danger" ng-show="emailMessage">Unvalid Email</div>-->
-                        <!--<div class="alert alert-danger" ng-show="phoneMessage">Unvalid Phone Number</div>-->
-
                         <fieldset ng-show="!successfulRegistration">
 
                             <div class="well">
@@ -53,10 +30,6 @@
                                 <select ng-model="selectedType" ng-options="x for x in allType"></select>
                             </div>
 
-                            <!--<div class="well">-->
-                            <!--Room Capacity-->
-                            <!--<select ng-model="selectedCapacity" ng-options="x for x in allCapacity"></select>-->
-                            <!--</div>-->
                             <div class="form-group">
                                 <input class="form-control" type='capacity' placeholder="Number of people"
                                        id='numberOfPeople' name="numberOfPeople" ng-model='numberOfPeople' value=""
@@ -105,13 +78,4 @@
         </div>
     </div>
 </section>
-
-
-<!-- copyright -->
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- </body>
-
-</html> -->
+</div>
