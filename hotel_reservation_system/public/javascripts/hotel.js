@@ -45,25 +45,50 @@ app.config(['$routeProvider', function($routeProvider){
 }]);
 app.controller('searchController',['$location','$scope','$resource','$filter',
     function($location, $scope,$resource,$filter){
-        $scope.selectedType=[{type:"Any"}];
-        var Rooms = $resource('/rooms/type', {});
-        Rooms.query(function(roomType){
+
+        $scope.st=new Date();
+        $scope.et=new Date();
+        var Type = $resource('/rooms/type', {});
+        Type.query(function(roomType){
             $scope.allType = roomType;
+            $scope.allType.push("Any");
+            $scope.selectedType=$scope.allType[$scope.allType.length-1];
+            console.log($scope.selectedType)
         });
+
         // $scope.selectedCapacity=[{type:"Any"}];  //for load capacity in db, but not needed
         // var Rooms = $resource('/rooms/capacity', {});
         // Rooms.query(function(roomCapacity){
         //     $scope.allCapacity = roomCapacity;
         // });
         //para: numberOfPeople  startDate endDate roomType
+
         $scope.searchRooms=function()
         {
+            console.log($scope.selectedType);
             var roomType=$scope.roomType;
-            var peopleNumber=$scope.numberOfPeople
+            console.log($scope.numberOfPeople==undefined);
+            var peopleNumber=$scope.numberOfPeople==undefined?'':$scope.numberOfPeople;
+            console.log(peopleNumber);
             var start=$filter("date")($scope.startDate.valueOf(), "MM/dd/yyyy");
             var end=$filter("date")($scope.endDate.valueOf(), "MM/dd/yyyy");
+            var Rooms=$resource('/rooms/search');
+            Rooms.save({},{roomType:roomType,peopleNumber:peopleNumber,start:start,end:end},function(result){
+                var rooms=result.result;
+                console.log(rooms);
+                if(rooms==null)
+                {
+                    $scope.suggestion='Sorry, we can\'t find a plan for you for now';
+                }
+                else
+                {
+                    $scope.suggestion='Our Suggestion';
+                    $scope.rooms=rooms;
+                }
+            })
 
         }
+
         //para:searchResult
     }]);
 
