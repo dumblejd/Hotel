@@ -39,6 +39,10 @@ app.config(['$routeProvider', function($routeProvider){
             templateUrl: 'pages/reserves.html',
             controller: 'showReserveController'
         })
+        .when('/reserves/:username', {
+            templateUrl: 'pages/reserves.html',
+            controller: 'showUserReserveController'
+        })
         .otherwise({
             redirectTo: '/'
         });
@@ -96,10 +100,11 @@ app.controller('indexController',['$location','$scope',
 	function($location, $scope){
             if (sessionStorage.getItem('user')!=null){
                 $scope.signout = true;
-                $scope.AccountHref = '#/';
+                $scope.AccountHref = '#/reserves/'+sessionStorage.getItem('user');
                 $scope.LoginName = 'Welcome! ' + sessionStorage.getItem('user');
                 if (sessionStorage.getItem('level')==0){
                     $scope.room = true;
+                    $scope.AccountHref = '#/reserves';
                 }
             }
             else{
@@ -294,6 +299,27 @@ app.controller('showReserveController',
         Reserves.query(function(reserves){
             $scope.reserves = reserves;
         });
+        $scope.cancel = function (_id) {
+            console.log('1');
+            var Reserves = $resource('/reserves/:id', {});
+            Reserves.delete({id:_id}, function (room) {
+                location.reload();
+            })
+        }
+    });
+
+app.controller('showUserReserveController',
+    function($scope, $resource, $location, $routeParams){
+        var Reserves = $resource('/reserves/:username', {});
+        Reserves.query({ username: $routeParams.username },function(reserves){
+            $scope.reserves = reserves;
+        });
+        $scope.cancel = function (_id) {
+            var Reserves = $resource('/reserves/:id', {});
+            Reserves.delete({id:_id}, function (room) {
+                location.reload();
+            })
+        }
     });
 
 

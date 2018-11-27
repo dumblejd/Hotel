@@ -12,12 +12,21 @@ router.get('/', function(req, res) {
     });
 });
 
-router.get('/:id', function(req, res) {
+router.get('/:username', function(req, res) {
     var collection = db.get('reserves');
-    collection.findOne({ _id: req.params.id }, function(err, reserve){
+    collection.find({ username: req.params.username}, function(err, reserves){
         if (err) throw err;
 
-        res.json(reserve);
+        res.json(reserves);
+    });
+});
+
+router.delete('/:id', function (req, res) {
+    var collection = db.get('reserves');
+    collection.remove({ _id: req.params.id }, function(err, room){
+        if (err) throw err;
+
+        res.json(room);
     });
 });
 
