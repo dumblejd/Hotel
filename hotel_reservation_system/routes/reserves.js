@@ -36,6 +36,7 @@ router.post('/', function(req, res){
     collection.insert({
         "username" : req.body.username,
         "room_number" : req.body.room_number,
+        "room_id": req.body.room_id,
         "date" : req.body.date
     }, function(err, reserve){
         if (err) throw err;

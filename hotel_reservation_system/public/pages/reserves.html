@@ -37,8 +37,8 @@
                                 <tr class="gradeX" ng-repeat="reserve in reserves">
                                     <td>{{reserve.username}}</td>
                                     <td>{{reserve.room_number}}</td>
-                                    <td>{{reserve.date}}</td>
-                                    <td><input type="button" class="btn btn-danger" value="Cancel" ng-click="cancel(reserve._id)"></td>
+                                    <td><span class="label label-default" >{{reserve.date.start}} - {{reserve.date.end}}</span></td>
+                                    <td><input type="button" class="btn btn-danger" value="Cancel" ng-click="cancel(reserve._id, reserve.room_id, reserve.date)"></td>
                                 </tr>
                                 </tbody>
                             </table>

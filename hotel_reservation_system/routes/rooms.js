@@ -34,16 +34,38 @@ router.get('/type', function (req, res) {
 });
 router.post('/search', function (req, res) {
     var collection = db.get('rooms');
-    collection.find({}, function (err, rooms) {
+    console.log(req.body.type);
+    var peopleNumber = parseInt(req.body.peopleNumber);
+
+    if (req.body.roomType=='Any'){
+        collection.find({}, function (err, rooms){
+            search(err, rooms);
+        });
+    }
+    else{
+        collection.find({type:req.body.roomType}, function (err, rooms){
+            search(err, rooms);
+        });
+    }
+
+    function search(err,rooms){
         if (err) throw err;
         //res.json(rooms);
 
         var bag={};
         var result = [];
 
+        var userStart = new Date(req.body.start);
+        console.log(userStart.getTime);
+        var userEnd = new Date(req.body.end);
+        var diffDay = parseInt((userEnd-userStart)/ (1000 * 60 * 60 * 24));
+        bag['diffDay'] = diffDay;
 
         for (var i = 0, arrayLen = rooms.length; i < arrayLen; i++)
         {//judge date
+            if(peopleNumber<=0){
+                break;
+            }
             if(rooms[i].available=='unavailable') // unavailable or not
             {
                 continue;
@@ -51,15 +73,16 @@ router.post('/search', function (req, res) {
             if(rooms[i].reserved_time==null||rooms[i].reserved_time.length==0)
             {
                 result.push(rooms[i]);
+                peopleNumber -= rooms[i].occupancy;
                 continue;
             }
+
             for (var j = 0, indexLen = rooms[i].reserved_time.length; j < indexLen; j++)  //judge date
             {
-                var userStart = new Date(req.body.start);
-                console.log(userStart.getTime);
-                var userEnd = new Date(req.body.end);
+
                 var roomStart = new Date(rooms[i].reserved_time[j].start);
                 var roomEnd = new Date(rooms[i].reserved_time[j].end);
+
                 if (Math.max(userStart.getTime(),roomStart.getTime()) < Math.min(userEnd.getTime(),roomEnd.getTime()))
                 {
                     //time overlap
@@ -68,18 +91,23 @@ router.post('/search', function (req, res) {
                 else
                 {
                     result.push(rooms[i]);
+                    peopleNumber -= rooms[i].occupancy;
                     break;
                 }
             }
         }
         //from here result means room in available time slot  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
+        if(peopleNumber>0){
+            bag['result']=[];
+        }
+        else{
+            bag['result']=result;
+        }
 
-        bag['result']=result;
-        //res=JSON.stringify(result);
         res.json(bag);
-
-    });
+    }
 });
+
 router.get('/capacity', function (req, res) {
     var collection = db.get('rooms');
     collection.find({}, function (err, rooms) {

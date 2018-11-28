@@ -44,7 +44,7 @@
                                     <td>{{room.occupancy}}</td>
                                     <td>{{room.price}}</td>
                                     <td>{{room.available}}</td>
-                                    <td>{{room.reserved_time}}</td>
+                                    <td ><span id="date" class="label label-default" ng-repeat="date in room.reserved_time">{{date.start}} - {{date.end}}</span></td>
                                     <td><a class="btn btn-info" href="/#/room/edit/{{room._id}}">Edit</a></td>
                                     <td><a class="btn btn-danger" href="/#/room/delete/{{room._id}}">Delete</a></td>
                                 </tr>
