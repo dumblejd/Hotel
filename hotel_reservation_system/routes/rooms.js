@@ -41,7 +41,21 @@ router.post('/search', function (req, res) {
         collection.find({}, function (err, rooms){
             search(err, rooms);
         });
-
+    function prepare(prepareList,rooms,roomType,peopleNumber)
+    {
+        for(var i=0;i<rooms.length;i++)
+        {
+            if(rooms[i].type==roomType)
+            {
+                if(peopleNumber-parseInt(rooms[i].occupancy)>=0)
+                {
+                    peopleNumber=peopleNumber-parseInt(rooms[i].occupancy)
+                    prepareList.push(rooms[i]);
+                }
+            }
+        }
+        return peopleNumber;
+    }
     function filter(choices,rooms,peopleNumber,temp,index)
     {
 
@@ -61,22 +75,25 @@ router.post('/search', function (req, res) {
         }
     }
 
-    function roomType(rooms,roomType,)
+    function roomType(rooms,roomType,peopleNumber)
     {
         var max=-1;
+        var maxoc=0;
         for(var i=0;i<rooms.length;i++)
         {
             var temp=0;
+            var ocNumber=0;
             for(var j=0;j<rooms[i].length;j++)
             {
-                if(rooms[i][j].type==roomType)
-                {
+                if(rooms[i][j].type==roomType) {
                     temp++;
                 }
+                ocNumber += parseInt(rooms[i][j].occupancy);
             }
-            if(temp>=max)
+            if(temp>max||(temp==max&&ocNumber==peopleNumber))
             {
                 max=temp;
+                maxoc=ocNumber;
                 var final=rooms[i];
             }
         }
@@ -135,8 +152,12 @@ router.post('/search', function (req, res) {
         var choices=[];
         var temp=[];
         var final=[];
+        var prepareList=[];
+        //peopleNumber=prepare(prepareList,rooms,req.body.roomType,peopleNumber);
         filter(choices,result,peopleNumber,temp,0);
-        final=roomType(choices,req.body.roomType);
+        final = roomType(choices, req.body.roomType,peopleNumber);
+
+
         //from here result means room in available time slot  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
         if(choices.length<=0){
             bag['result']=[];
