@@ -34,20 +34,54 @@ router.get('/type', function (req, res) {
 });
 router.post('/search', function (req, res) {
     var collection = db.get('rooms');
-    console.log(req.body.type);
+    //console.log(req.body.type);
     var peopleNumber = parseInt(req.body.peopleNumber);
 
-    if (req.body.roomType=='Any'){
+
         collection.find({}, function (err, rooms){
             search(err, rooms);
         });
-    }
-    else{
-        collection.find({type:req.body.roomType}, function (err, rooms){
-            search(err, rooms);
-        });
+
+    function filter(choices,rooms,peopleNumber,temp,index)
+    {
+
+        if(peopleNumber<=0)
+        {
+            choices.push(temp.map(a => {return {...a}}));
+
+            return;
+        }
+        for(var i=index;i<rooms.length;i++)
+        {
+            temp.push(rooms[i]);
+            peopleNumber-=parseInt(rooms[i].occupancy);
+            filter(choices,rooms,peopleNumber,temp.map(a => {return {...a}}),i+1);
+            peopleNumber+=parseInt(rooms[i].occupancy);
+            temp.pop();
+        }
     }
 
+    function roomType(rooms,roomType,)
+    {
+        var max=-1;
+        for(var i=0;i<rooms.length;i++)
+        {
+            var temp=0;
+            for(var j=0;j<rooms[i].length;j++)
+            {
+                if(rooms[i][j].type==roomType)
+                {
+                    temp++;
+                }
+            }
+            if(temp>=max)
+            {
+                max=temp;
+                var final=rooms[i];
+            }
+        }
+        return final;
+    }
     function search(err,rooms){
         if (err) throw err;
         //res.json(rooms);
@@ -73,7 +107,7 @@ router.post('/search', function (req, res) {
             if(rooms[i].reserved_time==null||rooms[i].reserved_time.length==0)
             {
                 result.push(rooms[i]);
-                peopleNumber -= rooms[i].occupancy;
+                //peopleNumber -= rooms[i].occupancy;
                 continue;
             }
 
@@ -91,17 +125,24 @@ router.post('/search', function (req, res) {
                 else
                 {
                     result.push(rooms[i]);
-                    peopleNumber -= rooms[i].occupancy;
+                    //peopleNumber -= rooms[i].occupancy;
                     break;
                 }
             }
+
         }
+        //filter(choices,rooms,peopleNumber,temp,index)
+        var choices=[];
+        var temp=[];
+        var final=[];
+        filter(choices,result,peopleNumber,temp,0);
+        final=roomType(choices,req.body.roomType);
         //from here result means room in available time slot  ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑
-        if(peopleNumber>0){
+        if(choices.length<=0){
             bag['result']=[];
         }
         else{
-            bag['result']=result;
+            bag['result']=final;
         }
 
         res.json(bag);
