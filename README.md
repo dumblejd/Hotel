@@ -19,16 +19,16 @@ If you want to run the project:
 Here are some pictures of the application:
 
 
-![ad](https://raw.githubusercontent.com/dumblejd/HotelReservationApplication/master/ReadMePic/home.png)
+![home](https://raw.githubusercontent.com/dumblejd/HotelReservationApplication/master/ReadMePic/home.png)
       
       
-http://github.com/dumblejd/ReadMePic/roomadmin.png
+![roomadmin](https://raw.githubusercontent.com/dumblejd/HotelReservationApplication/master/ReadMePic/roomadmin.png)
         
-http://github.com/dumblejd/ReadMePic/roomedit.png
+![roomedit](https://raw.githubusercontent.com/dumblejd/HotelReservationApplication/master/ReadMePic/roomedit.png)
      
-http://github.com/dumblejd/ReadMePic/search.png
+![search](https://raw.githubusercontent.com/dumblejd/HotelReservationApplication/master/ReadMePic/search.png)
       
-http://github.com/dumblejd/ReadMePic/order.png
+![order](https://raw.githubusercontent.com/dumblejd/HotelReservationApplication/master/ReadMePic/order.png)
       
 
 
