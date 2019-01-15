@@ -18,7 +18,9 @@ If you want to run the project:
 
 Here are some pictures of the application:
 
-HotelReservationApplication/ReadMePic/home.png
+
+![image](HotelReservationApplication/ReadMePic/home.png)
+      
       
 http://github.com/dumblejd/ReadMePic/roomadmin.png
         
