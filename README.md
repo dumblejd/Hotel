@@ -18,15 +18,15 @@ If you want to run the project:
 
 Here are some pictures of the application:
 
-        HotelReservationApplication/ReadMePic/home.png
+http://github.com/dumblejd/HotelReservationApplication/ReadMePic/home.png
       
-        HotelReservationApplication/ReadMePic/roomadmin.png
+http://github.com/dumblejd/ReadMePic/roomadmin.png
         
-        HotelReservationApplication/ReadMePic/roomedit.png
+http://github.com/dumblejd/ReadMePic/roomedit.png
      
-        HotelReservationApplication/ReadMePic/search.png
+http://github.com/dumblejd/ReadMePic/search.png
       
-        HotelReservationApplication/ReadMePic/order.png
+http://github.com/dumblejd/ReadMePic/order.png
       
 
 
