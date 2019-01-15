@@ -19,7 +19,7 @@ If you want to run the project:
 Here are some pictures of the application:
 
 
-![image](HotelReservationApplication/ReadMePic/home.png)
+![image](http://github.com/dumblejd/HotelReservationApplication/ReadMePic/home.png)
       
       
 http://github.com/dumblejd/ReadMePic/roomadmin.png
