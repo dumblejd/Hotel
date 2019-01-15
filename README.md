@@ -1,3 +1,2 @@
-# CS6314
+# Hotel Reservation
 Web Programming Language Project
-123
