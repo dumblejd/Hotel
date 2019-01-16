@@ -16,7 +16,7 @@ If you want to run the project:
 
 3. open any web broswer and visit http://localhost:3000
 
-Here are some pictures of the application:
+#### Here are some pictures of the application:
 
 
 ![home](https://raw.githubusercontent.com/dumblejd/HotelReservationApplication/master/ReadMePic/home.png)
@@ -26,7 +26,7 @@ Here are some pictures of the application:
         
 ![roomedit](https://raw.githubusercontent.com/dumblejd/HotelReservationApplication/master/ReadMePic/roomedit.png)
      
-![search](https://raw.githubusercontent.com/dumblejd/HotelReservationApplication/master/ReadMePic/search.png)
+![search](https://raw.githubusercontent.com/dumblejd/HotelReservationApplication/master/ReadMePic/roomsearch.png)
       
 ![order](https://raw.githubusercontent.com/dumblejd/HotelReservationApplication/master/ReadMePic/order.png)
       
